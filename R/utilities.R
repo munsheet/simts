@@ -238,10 +238,11 @@ imu_time = function(x){
 #' 
 #' @param start     A \code{numeric} that provides the time of the first observation.
 #' @param end       A \code{numeric} that provides the time of the last observation.
+#' @param main      A \code{string} that gives an overall title for the plot.
 #' @return Added title, grid, and axes. 
 #' @author Stephane Guerrier and Justin Lee
 
-make_frame = function(start, end){  
+make_frame = function(start, end, main){  
   win_dim = par("usr")
   
   par(new = TRUE)
