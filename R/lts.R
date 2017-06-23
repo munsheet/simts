@@ -331,35 +331,12 @@ plot.lts = function(x, xlab = NULL, ylab = NULL, main = NULL, couleur = NULL, ..
   for (i in 1:dim_x[2]){
     plot(NA, xlim = c(start, end), ylim = range(x[,i]), xlab = xlab,
          xaxt = 'n', yaxt = 'n', bty = "n", ann = FALSE)
-    win_dim = par("usr")
     
-    par(new = TRUE)
-    plot(NA, xlim = c(start, end), ylim = c(win_dim[3], win_dim[4] + 0.09*(win_dim[4] - win_dim[3])),
-         xlab = xlab, xaxt = 'n', yaxt = 'n', bty = "n")
-    win_dim = par("usr")
-    
-    # Add grid
-    grid(NULL, NULL, lty = 1, col = "grey95")
-    
-    # Add title
-    x_vec = c(win_dim[1], win_dim[2], win_dim[2], win_dim[1])
-    y_vec = c(win_dim[4], win_dim[4],
-              win_dim[4] - 0.09*(win_dim[4] - win_dim[3]), 
-              win_dim[4] - 0.09*(win_dim[4] - win_dim[3]))
-    polygon(x_vec, y_vec, col = "grey95", border = NA)
-    text(x = mean(c(win_dim[1], win_dim[2])), y = (win_dim[4] - 0.09/2*(win_dim[4] - win_dim[3])), main[i])
-    
-    # Add axes and box
-    lines(x_vec[1:2], rep((win_dim[4] - 0.09*(win_dim[4] - win_dim[3])),2), col = "grey50")
-    box(col = "grey50")
+    make_frame(start, end, main, xlab, inloop = TRUE, i = i)
     
     if (i == dim_x[2]){
       axis(1, padj = 0.3)
     } 
-    
-    y_axis = axis(2, labels = FALSE, tick = FALSE)  
-    y_axis = y_axis[y_axis < (win_dim[4] - 0.09*(win_dim[4] - win_dim[3]))]
-    axis(2, padj = -0.2, at = y_axis)  
     
     # Add lines 
     lines(scales, x[,i], type = "l", col = couleur[i], pch = 16)

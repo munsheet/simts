@@ -376,7 +376,7 @@ plot.gts = function(x, xlab = NULL, ylab = NULL, main = NULL, couleur = "blue4",
   plot(NA, xlim = c(start, end), ylim = range(x), xlab = name_time, ylab = name_ts, 
        xaxt = 'n', yaxt = 'n', bty = "n", ann = FALSE)
 
-  make_frame(start, end, main)
+  make_frame(start, end, main, xlab)
   
   # Add lines 
   lines(scales, x, type = "l", col = couleur, pch = 16)
