@@ -235,13 +235,12 @@ imu_time = function(x){
 }
 
 #' @title Default utility function for various plots titles
-#' 
+#' @description Adds title, grid, and required x- and y-axes. 
 #' @param start     A \code{numeric} that provides the time of the first observation.
 #' @param end       A \code{numeric} that provides the time of the last observation.
 #' @param main      A \code{string} that gives an overall title for the plot.
 #' @return Added title, grid, and axes. 
 #' @author Stephane Guerrier and Justin Lee
-
 make_frame = function(start, end, main){  
   win_dim = par("usr")
   
@@ -265,9 +264,9 @@ make_frame = function(start, end, main){
   lines(x_vec[1:2], rep((win_dim[4] - 0.09*(win_dim[4] - win_dim[3])),2), col = "grey50")
   box(col = "grey50")
   
-  if (i == dim_x[2]){
-    axis(1, padj = 0.3)
-  } 
+  #if (i == dim_x[2]){
+  axis(1, padj = 0.3)
+  #} # not sure of the usage of dim_x
   
   y_axis = axis(2, labels = FALSE, tick = FALSE)  
   y_axis = y_axis[y_axis < (win_dim[4] - 0.09*(win_dim[4] - win_dim[3]))]
